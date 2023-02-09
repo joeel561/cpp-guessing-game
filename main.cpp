@@ -1,24 +1,25 @@
 #include <iostream>
-#include <stdlib.h> 
+#include <cstdlib>
+#include <random>
 
-using namespace std;
+int main()
+{
+	srand(time(nullptr));
+	int number = rand() % 100 + 1;
+	int guess;
 
-int main() {
-    srand (time(NULL));
-    int number = rand() % 100 + 1; 
-    int guess = 0;
+	do
+	{
+		std::cout << "Guess a number between 1 and 100:" << std::endl;
+		std::cin >> guess;
 
-    do {
-        cout << "Guess a number between 1 and 100:";
-        cin >> guess;
+		if (guess > number)
+			std::cout << " Too high! \n" << std::endl;
+		else if (guess < number)
+			std::cout << "Too low \n" << std::endl;
+		else
+			std::cout << "That's right \n" << std::endl;
+	} while (number != guess);
 
-        if (guess > number) {
-            cout << " Too high! \n" << endl; 
-        } else if (guess < number ) {
-            cout << "Too low \n" << endl; 
-        } else {
-            cout << "That's right \n" << endl;
-        }
-    } while (number != guess);
-    return 0;
+	return 0;
 }
